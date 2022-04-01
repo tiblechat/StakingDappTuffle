@@ -13,7 +13,7 @@ import Web3 from "web3";
 
 
 // for debug
-import MyTokenToBeStaked from "../contracts/MyTokenToBeStaked.json";
+//import MyTokenToBeStaked from "../contracts/MyTokenToBeStaked.json";
 
 class MainComp extends Component {
 
@@ -263,8 +263,8 @@ class MainComp extends Component {
 
     render() {
 
-        const networkId = this.state.netId;
-        const deployedNetwork = MyTokenToBeStaked.networks[networkId];
+        // const networkId = this.state.netId;
+        // const deployedNetwork = MyTokenToBeStaked.networks[networkId];
 
         if (!this.state.web3) {
             return <div>Loading Web3, accounts, and contract...</div>;
@@ -273,7 +273,7 @@ class MainComp extends Component {
             <div className="MainComp">
                 <h1>Staking dapp</h1>
                 <p>Stake any ERC20 to earn yield.</p>
-                <StakeComp onStake={this.StakeTransaction} dbgAddress ={deployedNetwork.address} ></StakeComp>
+                <StakeComp onStake={this.StakeTransaction} dbgAddress ={""} ></StakeComp>
                 <br></br>
                 <StakedList thelist={this.state.stakedlist} onUnStake={this.UnStakeTransaction}></StakedList>
                 <br></br>

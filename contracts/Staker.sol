@@ -64,7 +64,7 @@ contract Staker is Ownable {
       //rewToken = ERC20PresetMinterPauser(RewTokenAddress);
       // chainlink registry
       // TESTCHAIN
-      //registry = FeedRegistryInterface(_registry);
+      registry = FeedRegistryInterface(_registry);
   }
   
   function setRewardToken(address RewTokenAddress) public onlyOwner
@@ -104,16 +104,16 @@ function GetUserBalances(address user) public view returns (StakedToken[] memory
 
   function getPrice(address base, address quote) public view returns (int) 
   {
-            // TESTCHAIN
-        // (
-        //     uint80 roundID, 
-        //     int price,
-        //     uint startedAt,
-        //     uint timeStamp,
-        //     uint80 answeredInRound
-        // ) = registry.latestRoundData(base, quote);
-        // return price;
-        return 1475969518;
+           // TESTCHAIN
+        (
+            uint80 roundID, 
+            int price,
+            uint startedAt,
+            uint timeStamp,
+            uint80 answeredInRound
+        ) = registry.latestRoundData(base, quote);
+        return price;
+        //return 1475969518;
     }
 
   // staking d'erc20
@@ -281,9 +281,9 @@ function GetUserBalances(address user) public view returns (StakedToken[] memory
 // ok here
 
           // TESTCHAIN
-          uint8 decimals = 8;//registry.decimals(tokenAddress,Denominations.USD);//
+         // uint8 decimals = 8;//registry.decimals(tokenAddress,Denominations.USD);//
           
-          
+           uint8 decimals = registry.decimals(tokenAddress,Denominations.USD);//
           // TODO: le calcul qui suit pourait être fait en dehors de la buocle une fois qu'on connaît la valeur totale stakée en USD
 
           // n% APY (APR?)
